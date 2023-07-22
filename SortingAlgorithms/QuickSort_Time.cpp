@@ -5,7 +5,6 @@ int arr[1000],cntQ;
 
 int partition(int arr[], int start, int end)
 {
-
 	int pivot = arr[start];
 
 	int count = 0;
