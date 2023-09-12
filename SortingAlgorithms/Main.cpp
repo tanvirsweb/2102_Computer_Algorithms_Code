@@ -1,25 +1,39 @@
-// #include<sys/resource.h>
-#include<ios>
-#include<unistd.h>
+#include<bits/stdc++.h>
+#include "QuickSort_Time.cpp"
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<sys/time.h>
-#include<sys/resource.h>
+int main()
+{
 
-long get_mem_usage(){
-    struct rusage myusage;
-    getrusage(RUSAGE_SELF,&myusage);
-    return myusage.ru_maxrss;
-}
+	int n=2300;
+    // ifstream in("data_rand.txt");
+	// ifstream in("data_asc.txt");
+	// ifstream in("data_desc.txt");
+    ifstream in("data_pn.txt");
 
-
-int main(){
-    long baseline=get_mem_usage();
-    for(int i=0;i<100;i++){
-        char *p=malloc(1024*100);
-        memset(p,1,1024*100);
-        sleep(1);
-        printf("usage: %ld + %ld\n",baseline,get_mem_usage());
+    for(int i=0;i<n;i++){
+        in>>arr[i];
+        //cout<<a[i]<<endl;
     }
+	in.close();//close file
+    cout<<"Sorting Algorithm running ..... "<<endl;
+
+    auto start = chrono::steady_clock::now();
+    //------Call a sorting algorithm---------
+    // quickSort(arr,0,n);
+    sort(arr,arr+n);
+
+    //----------execution complete of the sorting algorithm-------
+    auto end = chrono::steady_clock::now();
+    auto diff = end - start;
+
+    // print arrray
+    // for(int i=0;i<n;i++) cout<<arr[i]<<" "; cout<<endl;
+
+	long long int t=chrono::duration <double, nano> (diff).count();
+    cout<<"When n="<<n<<endl;
+    cout<<"Required time:" << t << " nano sec" << endl;
+	cout<<"Required time:" << t*1.0/(int)1e3 << " micro sec" << endl;
+	cout<<"Required time:" << t*1.0/(int)1e6 << " mili sec" << endl;
+
+	return 0;
 }
