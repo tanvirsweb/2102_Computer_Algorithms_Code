@@ -45,12 +45,12 @@ void testFunction(string str,vector<int> arr ,int l, int n , void (*func)(vector
 int main()
 {
 
-	const int n=5e4;
+	const int n=1e5;
     vector<int> arr(n);
     // ifstream in("data_rand.txt");
-	// ifstream in("data_asc.txt");
+	ifstream in("data_asc.txt");
 	// ifstream in("data_desc.txt");
-    ifstream in("data_rand.txt");
+    // ifstream in("data_rand.txt");
 
     for(int i=0;i<n;i++){
         in>>arr[i];
